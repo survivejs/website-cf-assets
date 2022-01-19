@@ -1,0 +1,20 @@
+{
+  "allow": ["net"],
+  "scripts": {
+    "get-images-from-worker": {
+      "cmd": "deno run ./get-images-from-worker.ts"
+    },
+    "get-images": {
+      "cmd": "deno run ./get-images.ts"
+    },
+    "upload-images": {
+      "cmd": "deno run ./upload-images.ts"
+    },
+    "serve-get-images": {
+      "cmd": "denoflare serve get-images"
+    },
+    "publish-get-images": {
+      "cmd": "denoflare push get-images"
+    }
+  }
+}
