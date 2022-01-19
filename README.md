@@ -10,7 +10,7 @@ Before uploading, set up `config.json` like below:
 
 ```json
 {
-  "account": "todo",
+  "accountId": "todo",
   "token": "todo"
 }
 ```
@@ -19,7 +19,11 @@ You can get the account id through Cloudflare UI. [See this blog post to underst
 
 It is important you don't commit this file to the repository for security reasons.
 
-To upload the images, run `deno run -A ./upload.ts`.
+To upload the images, run `deno run -A ./upload-images.ts`.
+
+## Getting images
+
+There's a small helper for getting the uploaded images: `deno run -A ./get-images`.
 
 ## Reference
 
