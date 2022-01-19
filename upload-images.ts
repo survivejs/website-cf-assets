@@ -6,7 +6,7 @@ const files = (await dir("img", [".jpg", ".png"])).map((o) => o.path);
 
 for (const file of files) {
   console.log("uploading", file);
-  await upload(config.accountId, config.token, file);
+  await upload(config.accountId, config.apiToken, file);
   console.log("uploaded", file);
 }
 

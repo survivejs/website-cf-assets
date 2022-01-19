@@ -11,7 +11,7 @@ Before uploading, set up `config.json` like below:
 ```json
 {
   "accountId": "todo",
-  "token": "todo"
+  "apiToken": "todo"
 }
 ```
 
@@ -24,6 +24,10 @@ To upload the images, run `deno run -A ./upload-images.ts`.
 ## Getting images
 
 There's a small helper for getting the uploaded images: `deno run -A ./get-images`.
+
+## Using workers
+
+Follow [denoflare instructions](https://denoflare.dev/guides/serve) to run the workers.
 
 ## Reference
 

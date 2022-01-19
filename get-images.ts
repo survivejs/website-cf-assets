@@ -1,6 +1,6 @@
 import config from "./config.json" assert { type: "json" };
 
-const images = await getImages(config.accountId, config.token);
+const images = await getImages(config.accountId, config.apiToken);
 
 console.log(images);
 
