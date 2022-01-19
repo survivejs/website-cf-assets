@@ -43,3 +43,7 @@ Once it's running, you'll have something like `https://get-images.mynamespace.wo
 
 * [Images documentation](https://developers.cloudflare.com/images/)
 * [Workers documentation](https://developers.cloudflare.com/workers/)
+
+## TODO
+
+* Explore the usage of KV storage for caching image references. Doing this would be worthwhile with a large amount of images as this would speed up the image lookup in the worker.
