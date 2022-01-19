@@ -27,7 +27,7 @@ There's a small helper for getting the uploaded images: `deno run -A ./get-image
 
 ## Using workers
 
-Follow [denoflare instructions](https://denoflare.dev/guides/serve) to run the workers.
+To get started, copy `denoflare.tpl` as `.denoflare` and make sure you [denoflare](https://denoflare.dev/) installed. Then, to run the local hello, use `denoflare serve hello-local`. There's also an endpoint for getting images: `denoflare serve get-images`.
 
 ## Reference
 
