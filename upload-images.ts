@@ -1,13 +1,31 @@
+import * as path from "https://deno.land/std@0.113.0/path/mod.ts";
+import { getImages } from "./src/getImages.ts";
 import config from "./config.json" assert { type: "json" };
 
-import * as path from "https://deno.land/std@0.113.0/path/mod.ts";
+uploadImages();
 
-const files = (await dir("img", [".jpg", ".png"])).map((o) => o.path);
+async function uploadImages() {
+  const images = (await getImages(config.accountId, config.apiToken)).map((o) =>
+    o.filename
+  );
 
-for (const file of files) {
-  console.log("uploading", file);
-  await upload(config.accountId, config.apiToken, file);
-  console.log("uploaded", file);
+  const files = (await dir("img", [".jpg", ".png"])).map((o) => o.path).filter(
+    (p) => !images.includes(p),
+  );
+
+  if (files.length === 0) {
+    console.log("no images to upload");
+
+    return;
+  } else {
+    console.log("images to upload", files.length);
+  }
+
+  for (const file of files) {
+    console.log("uploading", file);
+    await upload(config.accountId, config.apiToken, file);
+    console.log("uploaded", file);
+  }
 }
 
 async function upload(accountId: string, token: string, p: string) {

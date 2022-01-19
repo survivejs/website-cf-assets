@@ -1,6 +1,15 @@
+// TODO: Maybe this should return a promise so possible error
+// can be handled easier.
 async function getImages(accountId: string, token: string) {
   let page = 1;
-  let ret: string[] = [];
+  // TODO: Find the type from cloudflare
+  let ret: {
+    id: string;
+    filename: string;
+    uploaded: string;
+    requireSignedURLs: boolean;
+    variants: string[];
+  }[] = [];
   let images = [];
 
   do {
@@ -12,7 +21,9 @@ async function getImages(accountId: string, token: string) {
           Authorization: `Bearer ${token}`,
         },
       },
-    ).then((res) => res.json()).then(({ result: { images } }) => images);
+    ).then((res) => res.json()).then(({ result: { images } }) => images).catch(
+      (err) => console.error(err),
+    );
 
     ret = ret.concat(images);
     page++;
