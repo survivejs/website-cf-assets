@@ -4,8 +4,9 @@
         "get-images": {
             "path": "workers/get-images.ts",
             "bindings": {
-                "accountId": { "value": "TODO" },
-                "apiToken": { "value": "TODO" }
+                "apiSecret": { "value": "TODO" },
+                "cfAccountId": { "value": "TODO" },
+                "cfApiToken": { "value": "TODO" }
             },
             "localPort": 3030
         },

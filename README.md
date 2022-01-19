@@ -11,7 +11,9 @@ Before uploading, set up `config.json` like below:
 ```json
 {
   "accountId": "todo",
-  "apiToken": "todo"
+  "apiToken": "todo",
+  "getImagesEndpoint": "todo",
+  "getImagesToken": "todo"
 }
 ```
 

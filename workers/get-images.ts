@@ -4,13 +4,30 @@ import { getImages } from "../src/getImages.ts";
 // and then read the images from a KV store here. Reading from the Cloudflare
 // API comes with some lag due to multiple requests but for small amounts of
 // images that's acceptable.
-//
-// Another good addition would be securing the end point with an auth key.
-// Adapt from here, https://developers.cloudflare.com/workers/examples/basic-auth .
 export default {
-  async fetch(_request: Request, env: { accountId: string; apiToken: string }) {
+  async fetch(
+    request: Request,
+    env: { cfAccountId: string; cfApiToken: string; apiSecret: string },
+  ) {
+    const { protocol } = new URL(request.url);
+
+    // In the case of a "Basic" authentication, the exchange
+    // MUST happen over an HTTPS (TLS) connection to be secure.
+    if (
+      "https:" !== protocol ||
+      "https" !== request.headers.get("x-forwarded-proto")
+    ) {
+      // @ts-ignore This comes from CF workers
+      throw new BadRequestException("Please use a HTTPS connection.");
+    }
+
+    // Adapted from https://developers.cloudflare.com/workers/examples/auth-with-headers
+    if (request.headers.get("Authorization") !== `Bearer ${env.apiSecret}`) {
+      return new Response("You need to login.", { status: 401 });
+    }
+
     try {
-      const images = await getImages(env.accountId, env.apiToken);
+      const images = await getImages(env.cfAccountId, env.cfApiToken);
 
       return new Response(JSON.stringify(images), {
         headers: { "content-type": "application/json;charset=UTF-8" },
