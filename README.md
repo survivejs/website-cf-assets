@@ -33,7 +33,7 @@ The same can also be done via a worker.
 
 ## Using workers
 
-To get started, copy `denoflare.tpl` as `.denoflare` and make sure you [denoflare](https://denoflare.dev/) installed. To run the worker locally, use `vr serve-get-images`.
+To get started, copy `denoflare.tpl.json` as `.denoflare` and make sure you [denoflare](https://denoflare.dev/) installed. To run the worker locally, use `vr serve-get-images`.
 
 To publish, use `publish-get-images`. For this, you have to take care to configure Cloudflare first so that workers are enabled.
 
