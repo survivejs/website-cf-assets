@@ -15,11 +15,11 @@ Before uploading, set up `config.json` like below:
 }
 ```
 
-You can get the account id through CloudFlare UI. [See this blog post to understand how to generate the token](https://www.better.dev/cloudflare-images).
+You can get the account id through Cloudflare UI. [See this blog post to understand how to generate the token](https://www.better.dev/cloudflare-images). The permission you are looking for is called "Cloudflare Images" and it should have "Edit" permissions enabled.
 
 It is important you don't commit this file to the repository for security reasons.
 
-To upload the images, run `deno run -A ./mod.ts`.
+To upload the images, run `deno run -A ./upload.ts`.
 
 ## Reference
 
