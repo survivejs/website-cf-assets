@@ -6,6 +6,7 @@ import { getImages } from "../src/getImages.ts";
 // images that's acceptable.
 //
 // Another good addition would be securing the end point with an auth key.
+// Adapt from here, https://developers.cloudflare.com/workers/examples/basic-auth .
 export default {
   async fetch(_request: Request, env: { accountId: string; apiToken: string }) {
     try {
