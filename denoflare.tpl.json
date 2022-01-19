@@ -9,10 +9,6 @@
         "cfApiToken": { "value": "TODO" }
       },
       "localPort": 3030
-    },
-    "hello-local": {
-      "path": "workers/hello.ts",
-      "localPort": 3030
     }
   },
   "profiles": {
