@@ -8,7 +8,7 @@ The code in the repository depends on [Deno](https://deno.land/) and [velocirapt
 
 Before uploading, set up `config.json` like below:
 
-**config.json**
+**.config.json**
 
 ```json
 {

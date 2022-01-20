@@ -1,4 +1,4 @@
-import config from "./config.json" assert { type: "json" };
+import config from "./.config.json" assert { type: "json" };
 
 const images = await fetch(config.getImagesEndpoint, {
   headers: {
