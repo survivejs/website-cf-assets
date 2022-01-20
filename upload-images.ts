@@ -46,16 +46,22 @@ async function upload(accountId: string, token: string, p: string) {
   );
 }
 
-async function dir(p: string, extensions?: string[]) {
-  const ret = [];
+type Path = { path: string; name: string };
 
-  for await (const { name } of Deno.readDir(p)) {
-    if (extensions) {
-      if (extensions.includes(path.extname(name))) {
+async function dir(p: string, extensions?: string[]) {
+  let ret: Path[] = [];
+
+  for await (const { name, isDirectory } of Deno.readDir(p)) {
+    if (isDirectory) {
+      ret = ret.concat(await dir(path.join(p, name), extensions));
+    } else {
+      if (extensions) {
+        if (extensions.includes(path.extname(name))) {
+          ret.push({ path: path.join(p, name), name });
+        }
+      } else {
         ret.push({ path: path.join(p, name), name });
       }
-    } else {
-      ret.push({ path: path.join(p, name), name });
     }
   }
 
