@@ -9,9 +9,10 @@ async function uploadImages() {
     o.filename
   );
 
-  const files = (await dir("img", [".jpg", ".png"])).map((o) => o.path).filter(
-    (p) => !images.includes(p),
-  );
+  const files = (await dir("img", [".jpg", ".png", ".svg"])).map((o) => o.path)
+    .filter(
+      (p) => !images.includes(p),
+    );
 
   if (files.length === 0) {
     console.log("no images to upload");

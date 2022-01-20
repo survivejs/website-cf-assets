@@ -1,5 +1,5 @@
 {
-  "allow": ["net"],
+  "allow": ["net", "read"],
   "scripts": {
     "get-images-from-worker": {
       "cmd": "deno run ./get-images-from-worker.ts"
