@@ -47,3 +47,8 @@ Once it's running, you'll have something like `https://get-images.mynamespace.wo
 ## TODO
 
 * Explore the usage of KV storage for caching image references. Doing this would be worthwhile with a large amount of images as this would speed up the image lookup in the worker.
+
+## Caveats
+
+* If you are not careful, this can get expensive. [Source](https://blog.klungo.no/2021/12/07/cloudflare-images-has-a-lot-of-issues/). [The HN thread](https://news.ycombinator.com/item?id=29474743) lists affordable options with similar capabilities.
+* SVGs don't seem to be supported at the moment so although they are uploaded, they won't show up in the image index!
