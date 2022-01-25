@@ -9,6 +9,13 @@
         "cfApiToken": { "value": "TODO" }
       },
       "localPort": 3030
+    },
+    "get-cached-image": {
+      "path": "workers/get-images.ts",
+      "bindings": {
+        "imageRoot": { "value": "TODO" }
+      },
+      "localPort": 3030
     }
   },
   "profiles": {

@@ -33,11 +33,18 @@ The same can also be done via a worker.
 
 ## Using workers
 
-To get started, copy `denoflare.tpl.json` as `.denoflare` and make sure you [denoflare](https://denoflare.dev/) installed. To run the worker locally, use `vr serve-get-images`.
+The repository includes the following workers:
 
-To publish, use `publish-get-images`. For this, you have to take care to configure Cloudflare first so that workers are enabled.
+* `get-images` returns a JSON of all the images uploaded to Cloudflare Images
+* `get-cached-image` allows you to fetch an image from Cloudflare cache to avoid hitting Cloudflare Images directly as doing this is cheaper
 
-Once it's running, you'll have something like `https://get-images.mynamespace.workers.dev/` and you can access the images over the web. The resource is useful when you have to use the images elsewhere (i.e. for static generation).
+To get started with the workers, copy `denoflare.tpl.json` as `.denoflare` and make sure you [denoflare](https://denoflare.dev/) installed.
+
+To run a worker locally, use `vr worker:serve-<worker name>`.
+
+To publish, use `worker:publish-<worker name>`. For this, you have to take care to configure Cloudflare first so that workers are enabled.
+
+Once it's running, you'll have something like `https://<worker name>.mynamespace.workers.dev/` available for the worker.
 
 ## Reference
 

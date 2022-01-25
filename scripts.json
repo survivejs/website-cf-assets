@@ -10,11 +10,17 @@
     "upload-images": {
       "cmd": "deno run ./upload-images.ts"
     },
-    "serve-get-images": {
+    "worker:serve-get-images": {
       "cmd": "denoflare serve get-images"
     },
-    "publish-get-images": {
+    "worker:publish-get-images": {
       "cmd": "denoflare push get-images"
+    },
+    "worker:serve-get-cached-image": {
+      "cmd": "denoflare serve get-cached-image"
+    },
+    "worker:publish-get-cached-image": {
+      "cmd": "denoflare push get-cached-image"
     }
   }
 }
