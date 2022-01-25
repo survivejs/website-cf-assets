@@ -16,6 +16,12 @@ const thirtyDays = oneDay * 30;
 async function handleRequest(imageRoot: string, request: Request) {
   const cacheUrl = new URL(request.url);
   const { searchParams } = cacheUrl;
+
+  if (!searchParams.has("image") || !searchParams.has("type")) {
+    // @ts-ignore This comes from CF workers
+    throw new BadRequestException("Expected parameters are missing.");
+  }
+
   const image = searchParams.get("image");
   const type = searchParams.get("type");
 
