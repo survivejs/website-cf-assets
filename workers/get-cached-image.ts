@@ -1,8 +1,14 @@
+import type { ModuleWorkerContext } from "https://raw.githubusercontent.com/skymethod/denoflare/v0.4.4/common/cloudflare_workers_types.d.ts";
+
 // Adapted from https://developers.cloudflare.com/workers/examples/cache-api
 export default {
-  fetch(request: Request, env: { imageRoot: string }) {
+  fetch(
+    request: Request,
+    env: { imageRoot: string },
+    ctx: ModuleWorkerContext,
+  ) {
     try {
-      return handleRequest(env.imageRoot, request);
+      return handleRequest(env.imageRoot, request, ctx);
     } catch (e) {
       return new Response("Error thrown " + e.message);
     }
@@ -13,7 +19,11 @@ const oneHourInSeconds = 60 * 60;
 const oneDay = oneHourInSeconds * 24;
 const thirtyDays = oneDay * 30;
 
-async function handleRequest(imageRoot: string, request: Request) {
+async function handleRequest(
+  imageRoot: string,
+  request: Request,
+  ctx: ModuleWorkerContext,
+) {
   const cacheUrl = new URL(request.url);
   const { searchParams } = cacheUrl;
 
@@ -56,10 +66,7 @@ async function handleRequest(imageRoot: string, request: Request) {
 
     // Store the fetched response as cacheKey
 
-    // TODO: How to do this with denoflare?
-    // Use waitUntil so you can return the response without blocking on
-    // writing to cache
-    // event.waitUntil(cache.put(cacheKey, response.clone()));
+    ctx.waitUntil(cache.put(cacheKey, response.clone()));
 
     console.log("putting to cache");
 
