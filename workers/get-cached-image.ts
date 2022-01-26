@@ -10,7 +10,7 @@ export default {
     try {
       return handleRequest(env.imageRoot, request, ctx);
     } catch (e) {
-      return new Response("Error thrown " + e.message);
+      return new Response(e.message, { status: 403 });
     }
   },
 };
