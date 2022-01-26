@@ -28,8 +28,7 @@ async function handleRequest(
   const { searchParams } = cacheUrl;
 
   if (!searchParams.has("image") || !searchParams.has("type")) {
-    // @ts-ignore This comes from CF workers
-    throw new BadRequestException("Expected parameters are missing.");
+    throw "Expected parameters are missing.";
   }
 
   const image = searchParams.get("image");

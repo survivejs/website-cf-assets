@@ -17,8 +17,7 @@ export default {
       "https:" !== protocol ||
       "https" !== request.headers.get("x-forwarded-proto")
     ) {
-      // @ts-ignore This comes from CF workers
-      throw new BadRequestException("Please use a HTTPS connection.");
+      throw "Please use a HTTPS connection.";
     }
 
     // Adapted from https://developers.cloudflare.com/workers/examples/auth-with-headers
