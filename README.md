@@ -42,7 +42,7 @@ To get started with the workers, copy `denoflare.tpl.json` as `.denoflare` and m
 
 To run a worker locally, use `vr worker:serve-<worker name>`.
 
-To publish, use `worker:publish-<worker name>`. For this, you have to take care to configure Cloudflare first so that workers are enabled.
+To publish, use `worker:publish-<worker name>`. For this, you have to take care to configure Cloudflare first so that workers are enabled. After initial publish, you have to enable the route through the `Triggers` tab related to the worker at Cloudflare UI.
 
 Once it's running, you'll have something like `https://<worker name>.mynamespace.workers.dev/` available for the worker.
 

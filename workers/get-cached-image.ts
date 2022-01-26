@@ -1,6 +1,6 @@
+// Adapted from https://developers.cloudflare.com/workers/examples/cache-api
 import type { ModuleWorkerContext } from "https://raw.githubusercontent.com/skymethod/denoflare/v0.4.4/common/cloudflare_workers_types.d.ts";
 
-// Adapted from https://developers.cloudflare.com/workers/examples/cache-api
 export default {
   fetch(
     request: Request,
@@ -50,16 +50,14 @@ async function handleRequest(
   let response = await cache.match(cacheKey);
 
   if (!response) {
-    console.log("getting from", targetUrl);
-
     // If not in cache, get it from origin
     response = await fetch(targetUrl);
 
     // Must use Response constructor to inherit all of response's fields
     response = new Response(response.body, response);
 
-    // Cache API respects Cache-Control headers. Setting s-max-age to 10
-    // will limit the response to be in cache for 10 seconds max
+    // Cache API respects Cache-Control headers. For example, setting
+    // s-max-age to 10 will limit the response to be in cache for 10 seconds max
 
     // Any changes made to the response here will be reflected in the cached value
     response.headers.append("Cache-Control", `s-maxage=${thirtyDays}`);
@@ -68,11 +66,7 @@ async function handleRequest(
 
     ctx.waitUntil(cache.put(cacheKey, response.clone()));
 
-    console.log("putting to cache");
-
     await cache.put(cacheKey, response.clone());
-
-    console.log("put to cache");
   }
 
   return response;
