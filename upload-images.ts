@@ -9,9 +9,11 @@ async function uploadImages() {
     o.filename
   );
 
+  // TODO: Check file size. It looks like 6 mb gif fails to upload
   // It looks like CF Images doesn't support svgs yet!
-  const files = (await dir("img", [".gif", ".jpg", ".png"/* ".svg" */
-  ])).map((o) => o.path)
+  const files = (await dir("img", [".gif", ".jpg", ".png" /* ".svg" */])).map((
+    o,
+  ) => o.path)
     .filter(
       (p) => !images.includes(p),
     );
@@ -24,6 +26,7 @@ async function uploadImages() {
     console.log("images to upload", files.length);
   }
 
+  // TODO: Check possible errors from Cloudflare (likely in the returned object)
   for (const file of files) {
     console.log("uploading", file);
     await upload(config.accountId, config.apiToken, file);
