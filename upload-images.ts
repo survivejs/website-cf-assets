@@ -9,7 +9,9 @@ async function uploadImages() {
     o.filename
   );
 
-  const files = (await dir("img", [".jpg", ".png", ".svg"])).map((o) => o.path)
+  // It looks like CF Images doesn't support svgs yet!
+  const files = (await dir("img", [".gif", ".jpg", ".png"/* ".svg" */
+  ])).map((o) => o.path)
     .filter(
       (p) => !images.includes(p),
     );
