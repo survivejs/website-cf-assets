@@ -7,7 +7,7 @@ import { getImages } from "../src/getImages.ts";
 export default {
   async fetch(
     request: Request,
-    env: { cfAccountId: string; cfApiToken: string; apiSecret: string },
+    env: { cfAccountId: CryptoKey; cfApiToken: CryptoKey; apiSecret: CryptoKey },
   ) {
     const { protocol } = new URL(request.url);
 

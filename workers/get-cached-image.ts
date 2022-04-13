@@ -4,7 +4,7 @@ import type { ModuleWorkerContext } from "https://raw.githubusercontent.com/skym
 export default {
   fetch(
     request: Request,
-    env: { imageRoot: string },
+    env: { imageRoot: CryptoKey },
     ctx: ModuleWorkerContext,
   ) {
     try {
@@ -20,7 +20,7 @@ const oneDay = oneHourInSeconds * 24;
 const thirtyDays = oneDay * 30;
 
 async function handleRequest(
-  imageRoot: string,
+  imageRoot: CryptoKey,
   request: Request,
   ctx: ModuleWorkerContext,
 ) {

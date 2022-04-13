@@ -4,16 +4,16 @@
     "get-images": {
       "path": "workers/get-images.ts",
       "bindings": {
-        "apiSecret": { "value": "TODO" },
-        "cfAccountId": { "value": "TODO" },
-        "cfApiToken": { "value": "TODO" }
+        "apiSecret": { "secret": "TODO" },
+        "cfAccountId": { "secret": "TODO" },
+        "cfApiToken": { "secret": "TODO" }
       },
       "localPort": 3030
     },
     "get-cached-image": {
       "path": "workers/get-images.ts",
       "bindings": {
-        "imageRoot": { "value": "TODO" }
+        "imageRoot": { "secret": "TODO" }
       },
       "localPort": 3030
     }
