@@ -26,13 +26,12 @@ async function handleRequest(
 ) {
   const cacheUrl = new URL(request.url);
   const { searchParams } = cacheUrl;
-
-  if (!searchParams.has("image") || !searchParams.has("type")) {
-    throw "Expected parameters are missing.";
-  }
-
   const image = searchParams.get("image");
   const type = searchParams.get("type");
+
+  if (image === null || type === null) {
+    return new Response("Parameters are missing", { status: 400 });
+  }
 
   // The assumption here is that imageRoot already has a / at the end
   const targetUrl = imageRoot + image + "/" + type;
@@ -52,6 +51,10 @@ async function handleRequest(
     // If not in cache, get it from origin
     response = await fetch(targetUrl);
 
+    if (response.status !== 200) {
+      return new Response("Image was not found", { status: 404 });
+    }
+
     // Must use Response constructor to inherit all of response's fields
     response = new Response(response.body, response);
 
@@ -62,7 +65,6 @@ async function handleRequest(
     response.headers.append("Cache-Control", `s-maxage=${thirtyDays}`);
 
     // Store the fetched response as cacheKey
-
     ctx.waitUntil(cache.put(cacheKey, response.clone()));
 
     await cache.put(cacheKey, response.clone());
