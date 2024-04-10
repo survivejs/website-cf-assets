@@ -1,6 +1,9 @@
 // TODO: Maybe this should return a promise so possible error
 // can be handled easier.
-async function getImages(accountId: string, token: string) {
+async function getImages(
+  accountId: CryptoKey | string,
+  token: CryptoKey | string,
+) {
   let page = 1;
   // TODO: Find the type from cloudflare
   let ret: {

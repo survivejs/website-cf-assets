@@ -1,6 +1,6 @@
 import * as path from "https://deno.land/std@0.113.0/path/mod.ts";
 import { getImages } from "./src/getImages.ts";
-import config from "./.config.json" assert { type: "json" };
+import config from "./.config.json" with { type: "json" };
 
 uploadImages();
 
