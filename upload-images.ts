@@ -10,9 +10,10 @@ async function uploadImages() {
   );
 
   // TODO: Check file size. It looks like 6 mb gif fails to upload
-  const files = (await dir("img", [".gif", ".jpg", ".png", ".svg"])).map((
-    o,
-  ) => o.path)
+  const files = (await dir("img", [".gif", ".jpg", ".jpeg", ".png", ".svg"]))
+    .map((
+      o,
+    ) => o.path)
     .filter(
       (p) => !images.includes(p),
     );
